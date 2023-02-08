@@ -33,7 +33,7 @@ function showCart() {
     let tdQuantity = document.createElement('td');
     // DONE: Fill in the <tr>'s under the <tbody> for each item in the cart
     tdProduct.textContent = state.cart.items[i].product;
-    tdQuantity.textContent = state.cart.items[i].quantity;
+    tdQuantity.textContent = state.cart.items[i].quantity};
     // DONE: Add the TR to the TBODY and each of the TD's to the TR
     tableBody.appendChild(tr);
     tr.appendChild(tdProduct);
