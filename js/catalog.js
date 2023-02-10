@@ -41,7 +41,7 @@ function addSelectedItemToCart() {
   state.cart.addItem(itemSelected, quantitySelected);
 }
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// DONE: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // DONE: Get the item and quantity from the form
   const itemSelected = document.getElementById("items").value;

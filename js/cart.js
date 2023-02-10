@@ -6,8 +6,9 @@ const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartItems = JSON.parse(localStorage.getItem('savedCart'));
   state.cart = new Cart(cartItems);
+  console.log(state.cart);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
@@ -24,21 +25,28 @@ function clearCart() { }
 function showCart() {
   // DONE: Find the table body
   let tableBody = document.querySelector('tbody');
+  console.log(state.cart.items);
   // DONE: Iterate over the items in the cart
-  for (let i in state.allProducts) {
+  for (let i in state.cart.items) {
     // DONE: Create a TR
     let tr = document.createElement('tr');
-    // NOT DONE: Create a TD for the delete link, quantity,  and the item
-    let tdProduct = document.createElement('td');
-    let tdQuantity = document.createElement('td');
-    // DONE: Fill in the <tr>'s under the <tbody> for each item in the cart
-    tdProduct.textContent = state.cart.items[i].product;
-    tdQuantity.textContent = state.cart.items[i].quantity};
-    // DONE: Add the TR to the TBODY and each of the TD's to the TR
     tableBody.appendChild(tr);
+
+    // DONE: Create a TD for the delete link, quantity,  and the item
+    let tdProduct = document.createElement('td');
     tr.appendChild(tdProduct);
+    let tdQuantity = document.createElement('td');
     tr.appendChild(tdQuantity);
-  }
+    let tdDeleteLink = document.createElement('td');
+    tr.appendChild(tdDeleteLink);
+
+    // DONE: Fill in the <tr>'s under the <tbody> for each item in the cart
+    tdProduct.textContent = `${state.cart.items[i].product}`;
+    tdQuantity.textContent = `${state.cart.items[i].quantity}`;
+    tdDeleteLink.textContent = 'Delete Item';
+    tdDeleteLink.id = `${state.cart.items[i].product}`
+  };
+  // DONE: Add the TR to the TBODY and each of the TD's to the TR
 }
 
 function removeItemFromCart(event) {
