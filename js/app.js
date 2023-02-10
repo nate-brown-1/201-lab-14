@@ -33,7 +33,17 @@ Cart.prototype.removeItem = function(item) {
 };
 
 Cart.prototype.updateCounter = function() {
-  // TODO: Update the cart count in the header nav with the number of items in the Cart
+  // DONE: Update the cart count in the header nav with the number of items in the Cart
+  let itemCount = document.getElementById('itemCount');
+  if (document.getElementById('counter')) {
+    let counter = document.getElementById('counter');
+    counter.remove();
+  }
+  let cartCounter = document.createElement('p');
+  cartCounter.id = 'counter';
+  cartCounter.textContent = state.cart.items.length;
+  itemCount.appendChild(cartCounter);
+  // console.log(state.cart.items);
 }
 
 const CartItem = function(product, quantity) {
